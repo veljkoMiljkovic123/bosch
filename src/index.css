@@ -1,0 +1,7 @@
+@import "tailwindcss";
+
+@layer utilities {
+  .heading {
+    @apply text-xl md:text-2xl 2xl:text-5xl text-blue-400;
+  }
+}
