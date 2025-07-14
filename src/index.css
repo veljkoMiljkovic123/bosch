@@ -4,4 +4,12 @@
   .heading {
     @apply text-xl md:text-2xl 2xl:text-5xl text-blue-400;
   }
+  @keyframes spinner {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
 }

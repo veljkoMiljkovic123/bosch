@@ -1,11 +1,14 @@
 import React from "react";
+import { useSelector } from "react-redux";
 import HeadingComponent from "./HeadingComponent";
 import { Link } from "react-router-dom";
 //logo
-import logo from "../assets/images/logo-bosch.png";
+import logo from "/public/images/logo-bosch.png";
 //cart
 import { CiShoppingCart } from "react-icons/ci";
+
 function NavbarComponent() {
+  const { totalProduct } = useSelector((state) => state.cartStore);
   return (
     <div>
       <HeadingComponent />
@@ -17,32 +20,30 @@ function NavbarComponent() {
               <img className="h-[70px]" src={logo} alt="Logo" />
             </Link>
           </div>
-          {/* Search Bar */}
-          <div className="bg-white rounded-[20px]">
-            <input
-              className="bg-transparent outline-none px-[25px] py-[17px]"
-              type="text"
-              placeholder="Search product"
-            />
-            <button className="bg-yellow-500 text-whiteTextColor px-[25px] py-[17px] rounded-[20px]">
-              Search
-            </button>
-          </div>
+       
 
-          {/* Links */}
-          <div className="">
-            <Link
-              to="/cart"
-              className="flex justify-center items-center text-white text-xl"
-            >
-              <CiShoppingCart color="white" size={30} />
-              Cart
-            </Link>
-          </div>
+         {/* Links */}
+<div className="flex justify-center items-center">
+  <Link
+    to="/cart"
+    className="flex justify-center items-center text-white text-xl gap-1"
+  >
+    {/* Ikonica */}
+    <CiShoppingCart color="white" size={25} />
+    
+    {/* Badge pored ikonice */}
+    <span className="bg-yellow-600 w-[20px] h-[20px] rounded-full flex items-center justify-center text-xs text-black font-bold">
+      {totalProduct}
+    </span>
+
+    <span className="ml-1">Cart</span>
+  </Link>
+</div>
+
         </div>
       </nav>
     </div>
   );
 }
-
+/* bg-yellow-600 w-[20px] h-[20px] rounded-full flex-center justify-center */
 export default NavbarComponent;
